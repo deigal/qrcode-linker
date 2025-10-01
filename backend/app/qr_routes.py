@@ -1,5 +1,5 @@
 from flask import Blueprint, send_file
-from app import db
+from app.extensions import db  # ✅ import from extensions
 from app.models import QRCode
 import uuid
 import qrcode
@@ -24,4 +24,9 @@ def generate_qr():
     img.save(img_io, 'PNG')
     img_io.seek(0)
 
-    return send_file(img_io, mimetype='image/png')
+    return send_file(
+        img_io,
+        mimetype='image/png',
+        as_attachment=True,
+        download_name='qr.png'
+)
