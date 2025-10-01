@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# VSCode settings
+.vscode/
+
+# Logs and temp
+*.log
+*.sqlite3
