@@ -7,11 +7,10 @@ class QRCode(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     uuid = db.Column(db.String(36), unique=True, nullable=False, default=lambda: str(uuid.uuid4()))
-    status = db.Column(db.String(20), nullable=False, default='Created')  # Created, Printed, Linked
+    status = db.Column(db.String(20), nullable=False, default='Created')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     linked_at = db.Column(db.DateTime, nullable=True)
 
-    # Relationship to StudentLink
     student_link = db.relationship('StudentLink', backref='qr_code', uselist=False)
 
 class StudentLink(db.Model):

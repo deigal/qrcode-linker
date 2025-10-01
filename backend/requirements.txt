@@ -7,3 +7,5 @@ gunicorn
 pyodbc
 SQLAlchemy
 python-dotenv
+qrcode
+Pillow

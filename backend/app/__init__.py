@@ -4,6 +4,7 @@ from flask_wtf import CSRFProtect
 from dotenv import load_dotenv
 import os
 import urllib.parse
+from .qr_routes import qr_bp
 
 load_dotenv()
 
@@ -23,8 +24,12 @@ def create_app():
     db.init_app(app)
     csrf.init_app(app)
 
+    # Import models so they’re registered
+    from . import models
+
     # Register routes (once created)
     # from .routes import main
     # app.register_blueprint(main)
+    app.register_blueprint(qr_bp)
 
     return app
