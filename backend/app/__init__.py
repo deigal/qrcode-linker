@@ -20,6 +20,7 @@ def create_app():
 
     from . import models
     from .qr_routes import qr_bp
+    csrf.exempt(qr_bp)  # ✅ Add this line before registering the blueprint
     app.register_blueprint(qr_bp)
 
     return app
