@@ -18,3 +18,7 @@ def generate_qr():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@qr_bp.route('/ping', methods=['GET'])
+def ping():
+    return jsonify({"status": "alive"}), 200
